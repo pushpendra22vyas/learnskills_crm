@@ -1,0 +1,81 @@
+{% extends 'myapp/myapp_base.html' %}
+{% load static %}
+{% block title %}
+Principal
+{% endblock %}
+{% block body_block %}
+<div class="container bg-light">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 bg-primary">
+                    <h3 class="text-white ml-2"><i class="fal fa-file-alt"></i>Principal</h3>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12 bg-secondary">
+                    <h4 class="text-white"><i class="fas fa-user-tie"></i><strong><em> MR. R.C. VYAS</em></strong></h4>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <img style="height: 350px;width: 350px;" src="{% static 'image/principal.jpg' %}"
+                        alt="Principal of College">
+                </div>
+                <div class="col-md-6 m-auto">
+                    <table class="table table-bordered mt-3">
+                        <tbody>
+                            <tr>
+                                <th class="text-center">NAME</th>
+                                <td class="text-center">MR. R.C. VYAS</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">Designation</th>
+                                <td class="text-center">Principal</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">EMAIL</th>
+                                <td class="text-center">principal@college.ac.in</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">DOB</th>
+                                <td class="text-center">18-September-1974</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">Qualification</th>
+                                <td class="text-center"> M.Tech, Ph.D.</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">CONTECT NUMBER</th>
+                                <td class="text-center">00543-923907</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-10 mx-auto">
+                    <p>We strive hard for quality education by ensuring the holistic development of students through
+                        curricular, cocurricular and extra-curricular activities. Inculcating in them the habits of
+                        leadership through activities making them competent to act as catalyst in nation building.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-10 mx-auto">
+                    <p>We believe in holistic development of pupil, i.e., theoretical knowledge through classroom
+                        teaching, practical exposure in techno-savvy labs/workshops as well as conducive
+                        industrial/corporate experience and social responsiveness through soft skill development
+                        necessary for students to be globally acceptable in the world of work. We not only facilitate
+                        for placements but also motivate and encourage them to be potential entrepreneurs.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-10 mx-auto">
+                    <p>We expect the incomers to be disciplined and better behaved which are otherwise necessary traits
+                        for deciding what is good and bad for their career.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

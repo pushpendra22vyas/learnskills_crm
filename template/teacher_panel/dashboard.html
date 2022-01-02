@@ -1,0 +1,66 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Teacher Dashboard
+{% endblock %}
+{% block teacher %}
+<div class="container bg-light">
+    <div class="row m-5">
+        <div class="col-md-6">
+            <div class="container">
+                <div class="text-center mt-3">
+                    {% if data.profile_pic %}
+                    <img src="/media/{{data.profile_pic}}" style="height: 250px;width: 250px;border-radius: 50%;">
+                    {% else %}
+                    <img src="{% static 'image/profile.jpg' %}" style="height: 250px;width: 250px;border-radius: 50%;">
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                    {% if data.subject %}
+                    <h3>({{ data.subject }})</h3>
+                    {% else %}
+                    <small><a href="{% url 'teacher_panel:edit_teacher_profile' %}" class="text-warning">Update Your Subject</a></small>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <table class="table table-bordered table-striped mt-3">
+                    <tbody>
+                        <tr>
+                            <th class="text-center">USER ID</th>
+                            <td class="text-center">{{ user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">EMAIL</th>
+                            <td class="text-center">{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">DOB</th>
+                            <td class="text-center">{{ data.dob }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">GENDER</th>
+                            <td class="text-center">{{ data.gender }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">MOBILE NUMBER</th>
+                            <td class="text-center">{{ data.contect_number }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">USER JOINED</th>
+                            <td class="text-center">{{ user.date_joined }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">LAST LOGIN</th>
+                            <td class="text-center">{{ user.last_login }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

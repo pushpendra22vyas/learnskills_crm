@@ -1,0 +1,202 @@
+{% extends 'myapp/myapp_base.html' %}
+{% load static %}
+{% block title %}
+Gallery
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid">
+    <h2 class="text-center text-danger my-3">Hello, This is The Gallery of Our College</h2>
+
+    <!-- HOSTEL SECTION -->
+    {% if hostel %}
+    <div class="row">
+        <div class="col-md-12 bg-primary">
+            <h3 class="text-white ml-2"><i class="fas fa-image"></i> Hostel Images</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for h in hostel %}
+        <div class="col-md-3 my-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/media/{{ h.photo }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ h.title }}</h5>
+                    <p class="card-text">{{ h.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if hostel.paginator.num_pages > 1 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+             {% if hostel.has_previous %} 
+            <a class="page-link" href="?page={{hostel.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+          </li>
+          {% for i in range %}
+          {% if i <= hostel.paginator.num_pages %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% else %}
+          {{ break }}
+          {% endif %}
+
+          {% endfor %}
+          <li class="page-item">
+              {% if hostel.has_next %}
+            <a class="page-link" href="?page={{hostel.next_page_number}}">Next</a>
+              {% endif %}
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
+
+
+      <!-- LIBRARY SECTION -->
+    {% if library %}  
+    <div class="row">
+        <div class="col-md-12 bg-primary">
+            <h3 class="text-white ml-2"><i class="fas fa-image"></i> Library Images</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for l in library %}
+        <div class="col-md-3 my-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/media/{{ l.photo }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ l.title }}</h5>
+                    <p class="card-text">{{ l.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if library.paginator.num_pages > 1 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+             {% if library.has_previous %} 
+            <a class="page-link" href="?page={{library.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+          </li>
+          {% for i in range %}
+          {% if i <= library.paginator.num_pages %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% else %}
+          {{ break }}
+          {% endif %}
+
+          {% endfor %}
+          <li class="page-item">
+              {% if library.has_next %}
+            <a class="page-link" href="?page={{library.next_page_number}}">Next</a>
+              {% endif %}
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
+
+
+
+      <!-- SPORTS SECTION -->
+
+    {% if sports %}
+    <div class="row">
+        <div class="col-md-12 bg-primary">
+            <h3 class="text-white ml-2"><i class="fas fa-image"></i> Sports Images</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for s in sports %}
+        <div class="col-md-3 my-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/media/{{ s.photo }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ s.title }}</h5>
+                    <p class="card-text">{{ s.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if sports.paginator.num_pages > 1 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+             {% if sports.has_previous %} 
+            <a class="page-link" href="?page={{sports.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+          </li>
+          {% for i in range %}
+          {% if i <= sports.paginator.num_pages %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% else %}
+          {{ break }}
+          {% endif %}
+
+          {% endfor %}
+          <li class="page-item">
+              {% if sports.has_next %}
+            <a class="page-link" href="?page={{sports.next_page_number}}">Next</a>
+              {% endif %}
+          </li>
+        </ul>
+    </nav>
+        {% endif %}
+        
+
+
+
+      <!-- CANTEEN SECTION   -->
+    {% if canteen%}  
+    <div class="row">
+        <div class="col-md-12 bg-primary">
+            <h3 class="text-white ml-2"><i class="fas fa-image"></i> Canteen Images</h3>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for c in canteen %}
+        <div class="col-md-3 my-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/media/{{ c.photo }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ c.title }}</h5>
+                    <p class="card-text">{{ c.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if canteen.paginator.num_pages > 1 %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+             {% if canteen.has_previous %} 
+            <a class="page-link" href="?page={{canteen.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+          </li>
+          {% for i in range %}
+          {% if i <= canteen.paginator.num_pages %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% else %}
+          {{ break }}
+          {% endif %}
+
+          {% endfor %}
+          <li class="page-item">
+              {% if canteen.has_next %}
+            <a class="page-link" href="?page={{canteen.next_page_number}}">Next</a>
+              {% endif %}
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
+</div>
+{% endblock %} 

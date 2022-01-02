@@ -1,0 +1,71 @@
+{% extends 'student_panel/stud_base.html' %}
+{% load static %}
+{% block title %}
+{{user.first_name}} Profile
+{% endblock %}
+{% block student %}
+<div class="container-fluid">
+    <div class="row py-md-3">
+        <div class="col-md-2 mx-auto my-auto">
+            <div class="text-center">
+                {% if data.profile %}
+                <img src="/media/{{data.profile}}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% else %}
+                <img src="{% static 'image/profile.jpg' %}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% endif %}
+            </div>
+            <p class="text-center"><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+            <p class="text-center"><em>{{ user.email }}</em></p>
+        </div>
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-primary">
+                    <h1>{{ user.username }}`s Detailes</h1>
+                </div>
+                <div class="card-body bg-secondary text-light">
+                    <table class="table table-striped ">
+                        <tbody>
+                            <tr>
+                                <th class="text-center">USER ID</th>
+                                <td class="text-center">{{ user.id }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">BRANCH</th>
+                                <td class="text-center">{{ data.branch }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">AGE</th>
+                                <td class="text-center">{{ data.age }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">DOB</th>
+                                <td class="text-center">{{ data.dob }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">CITY</th>
+                                <td class="text-center">{{ data.city }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">MOBILE NUMBER</th>
+                                <td class="text-center">{{ data.contect_number }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">GENDER</th>
+                                <td class="text-center">{{ data.gender }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">SPORTS ACTIVITIES</th>
+                                <td class="text-center">{{ data.sports_activity }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">CULTURAL ACTIVITIES</th>
+                                <td class="text-center">{{ data.culture_activity }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'student_panel/stud_base.html' %}
+{% block title %}
+Student dashboard
+{% endblock %}
+{% block student %}
+<div class="container-fluid">
+    <div class="row py-md-3">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-primary">
+                    <h1>My Details</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th class="text-center">USER ID</th>
+                                <td class="text-center">{{ user.id }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">USERNAME</th>
+                                <td class="text-center">{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">FULL NAME</th>
+                                <td class="text-center">{{ user.first_name }} {{user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">EMAIL</th>
+                                <td class="text-center">{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">USER JOINED</th>
+                                <td class="text-center">{{ user.date_joined }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">LAST LOGIN</th>
+                                <td class="text-center">{{ user.last_login }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

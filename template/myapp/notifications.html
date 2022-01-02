@@ -1,0 +1,30 @@
+{% extends 'myapp/myapp_base.html' %}
+{% load static %}
+{% block title %}
+Notifications
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid">
+    <div class="row mt-1  bg-primary text-white">
+        <h1 class="text-center mx-auto">
+            <i class="fas fa-bell text-warning"></i> 
+            All Notifications  
+            <i class="fas fa-bell text-warning"></i>
+        </h1>
+    </div>
+    <div class="row mt-1">
+        {% for note in all_notification %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img class="card-img-top" src="/media/{{note.photo_notification}}" alt="{{ note.title_notification }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ note.title_notification }}</h5>
+                    <p class="card-text">{{ note.notification }}</p>
+                    <p class="card-text"><small class="text-muted">{{ note.date }}</small></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

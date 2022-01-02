@@ -1,0 +1,84 @@
+{% extends 'myapp/myapp_base.html' %}
+{% load static %}
+{% block title %}
+Registration
+{% endblock %}
+{% block body_block %}
+<div class="container-fluid bg-light">
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <h1 class="text-center text-danger" style="font-family: 'Lobster', cursive;">Contact Us</h1>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row mx-auto mt-5">
+            <div class="col-md-4 my-3">
+                <div class="row bg-dark ">
+                    <div class="col-md-2 text-danger mt-3"><h1><i class="fa fa-map-marker" aria-hidden="true"></i></h1></div>
+                    <div class="col-md-10 text-white">
+                        <h3><strong>Location</strong></h3>
+                        <p>18 Purna Vihar,Bhramhpuri,
+                            ward-8,Navaniya,Udaipur,
+                            Rajasthan,<strong>313601</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="row bg-dark mt-5">
+                    <div class="col-md-2 text-danger mt-3"><h1><i class="fa fa-phone" aria-hidden="true"></i></h1></div>
+                    <div class="col-md-10 text-white">
+                        <h3><strong>Contact Number</strong></h3>
+                        <p>
+                            +91-2380409762<br>
+                            +91-4905834845<br>
+                            +91-7304986034<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="row bg-dark mt-5">
+                    <div class="col-md-2 text-danger mt-3"><h1><i class="fa fa-envelope" aria-hidden="true"></i></h1></div>
+                    <div class="col-md-10 text-white">
+                        <h3><strong>Contact E-Mail</strong></h3>
+                        <p>
+                            info@learskillcollege.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 ml-5 my-3">
+                <h2 class="text-center text-white bg-dark" style="font-family: 'Shadows Into Light', cursive;">Fill Out For Contact</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Mobile Number</label>
+                            <input type="number" class="form-control" name="mn" placeholder="Contact Number" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Message</label>
+                            <textarea name="message" id="" cols="80" rows="5" placeholder="Write Your Message" required></textarea>  
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-dark btn-lg" value="Send a Message">
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

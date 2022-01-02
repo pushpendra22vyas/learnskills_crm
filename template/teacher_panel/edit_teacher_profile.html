@@ -1,0 +1,81 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Edit Profile
+{% endblock %}
+{% block teacher %}
+<div class="container my-md-3">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="text-center">
+                {% if data.profile_pic %}
+                <img src="/media/{{data.profile_pic}}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% else %}
+                <img src="{% static 'image/profile.jpg' %}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% endif %}
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" placeholder="Your First Name" value="{{user.first_name}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" placeholder="Your Last Name" value="{{user.last_name}}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Email</label>
+                        <input type="text" class="form-control" name="email" placeholder="Your Email" value="{{user.email}}">
+                    </div>
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Profile</label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>DOB</label>
+                        <input type="text" class="form-control" name="dob" placeholder="Enter Your Date of Birth" value="{{data.dob}}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Subject</label>
+                        <input type="text" class="form-control" name="subject" placeholder="Subject" value="{{data.subject}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>City</label>
+                        <input type="text" class="form-control" name="city" placeholder="Where are You From" value="{{data.city}}">
+                    </div>    
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Contect Number</label>
+                        <input type="text" class="form-control" name="cn" placeholder="Mobile Number" value="{{data.contect_number}}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Gender</label>
+                        <select name="gender" class="custom-select my-1 mr-sm-2 form-control">
+                            <option value="male">Male</option>
+                            {% if data.gender == "female" %}
+                            <option value="female" selected>Female</option>
+                            {% else %}
+                            <option value="female">Female</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <input type="submit" id="submitbtn" class="btn-lg btn-warning" value="Update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Add Notifications
+{% endblock %}
+{% block teacher %}
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-8 mx-auto bg-light my-5 p-3">
+            <div class="bg-success text-white" style="border-radius: 25px;">
+                <h1 class="text-center">Post A Important Notification</h1>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type="text" class="form-control" name="title_notification" placeholder="Add Your Title" required>
+                </div>
+                <div class="form-row">
+                    <label>Photo:</label>
+                    <input type="file" class="form-control" name="file_notification" required>
+                </div>
+                <div class="form-group">
+                    <label>Notification:</label>
+                    <textarea name="notification" required placeholder="notification detailes" cols="106" rows="3"></textarea>
+                </div>
+                <div class="text-center form-group">
+                    <input type="submit" class="btn btn-outline-success" id="btnsub" value="Post Notification">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% if status_notification %}
+<script>
+    alert("{{ status_notification }}")
+</script>
+{% endif %}
+{% endblock %}

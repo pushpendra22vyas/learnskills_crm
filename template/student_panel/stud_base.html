@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-university" aria-hidden="true"></i>
+            LearnSkills</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ADMISSION
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'myapp:ug_program' %}">UG PROGRAMMES</a>
+                        <a class="dropdown-item" href="{% url 'myapp:pg_program' %}">PG PROGRAMMES</a>
+                        <a class="dropdown-item" href="{% url 'myapp:doctoral_program' %}">DOCTORAL PROGRAMMES</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ADMINISTRATION
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'myapp:principal' %}">PRINCIPAL</a>
+                        <a class="dropdown-item" href="{% url 'myapp:teacher' %}">TEACHERS</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        CAMPUS LIFE
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'myapp:hostel' %}">HOSTEL</a>
+                        <a class="dropdown-item" href="{% url 'myapp:library' %}">LIBRARY</a>
+                        <a class="dropdown-item" href="{% url 'myapp:canteen_guest_house' %}">CANTEEN & GUEST HOUSE</a>
+                        <a class="dropdown-item" href="{% url 'myapp:sports' %}">SPORTS</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myapp:gallery' %}">GALLERY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myapp:notifications_page' %}">NOTIFICATIONS</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{% url 'student_panel:user_logout' %}"
+                        class="nav-link mr-2 mt-2 text-white btn btn-outline-danger">Logout</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link mr-3" href="">
+                        <div class="text-center">
+                            {% if data.profile %}
+                            <img src="/media/{{data.profile}}" style="height: 25px;width: 25px;border-radius: 50%;">
+                            {% else %}
+                            <img src="{% static 'image/profile.jpg' %}"
+                                style="height: 25px;width: 25px;border-radius: 50%;">
+                            {% endif %}
+                        </div>{{user.first_name}}
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left side menu  -->
+            <div class="col-md-2 bg-secondary">
+                <nav class="navbar navbar-dark bg-secondary py-md-5 m-3">
+                    <a href="{% url 'student_panel:stud_dash' %}" class="navbar-brand">
+                        <div class="text-center">
+                            {% if data.profile %}
+                            <img src="/media/{{data.profile}}" style="height: 50px;width: 50px;border-radius: 50%;">
+                            {% else %}
+                            <img src="{% static 'image/profile.jpg' %}"
+                                style="height: 50px;width: 50px;border-radius: 50%;">
+                            {% endif %}
+                        </div>
+                        {{user.username}}
+                    </a>
+                    <ul class="navbar-nav mt-3">
+                        <li class="nav-item">
+                            <a href="{% url 'student_panel:view_profile' %}" class="nav-link mt-2">View Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'student_panel:edit_profile' %}" class="nav-link mt-2">Edit Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'student_panel:user_logout' %}" class="nav-link mt-2">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'student_panel:change_password' %}" class="nav-link mt-2">Change
+                                Password</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'student_panel:delete_profile' %}" class="nav-link mt-2">Delete Profile</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-10">
+                {% block student %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-center text-lg-start text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Site Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="{% url 'myapp:principal' %}" class="text-white nav-link">Principal</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:teacher' %}" class="text-white nav-link">Teachers</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:ug_program' %}" class="text-white nav-link">UG Programmes</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:pg_program' %}" class="text-white nav-link">PG Programmes</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Campus Life</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{% url 'myapp:hostel' %}" class="text-white nav-link">Hostel</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:library' %}" class="text-white nav-link">Library</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:canteen_guest_house' %}" class="text-white nav-link">Guest House &
+                                Canteen</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'myapp:sports' %}" class="text-white nav-link">Sports</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Useful Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="https://nptel.ac.in/" target="_blank" class="text-white nav-link">NPTEL</a>
+                        </li>
+                        <li>
+                            <a href="https://www.codewithharry.com/" target="_blank"
+                                class="text-white nav-link">CodeWithHarry</a>
+                        </li>
+                        <li>
+                            <a href="https://www.udemy.com/" target="_blank" class="text-white nav-link">Udemy</a>
+                        </li>
+                        <li>
+                            <a href="https://www.hackerrank.com/" target="_blank"
+                                class="text-white nav-link">HackerRank</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Social Media</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://twitter.com/wandered_soul22?s=08" target="_blank" class="text-white nav-link" ><i class="fab fa-twitter bg-info"></i> Twitter</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/pushpendra22vyas" target="_blank" class="text-white nav-link"><i
+                                    class="fab fa-github"></i> GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/pushpendra.vyas.1253" target="_blank" class="text-white nav-link"><i
+                                    class="fab fa-facebook-f bg-primary"></i> Facebook</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/pushpendra-vyas-5b333518a" target="_blank" class="text-white nav-link"><i class="fab fa-linkedin text-info"></i>
+                                LinkedIn</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="">LearnSkills.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</body>
+
+</html>

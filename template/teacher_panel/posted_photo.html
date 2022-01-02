@@ -1,0 +1,45 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Posted Photos
+{% endblock %}
+{% block teacher %}
+<div class="container-fluid">
+    <div style="height: 100vh;overflow-y: scroll;">
+        <table class="table table-bordered table-striped">
+            <thead class="bg-primary">
+                <tr>
+                    <th scope="col" class="text-center">S.No.</th>
+                    <th scope="col" class="text-center">Title</th>
+                    <th scope="col" class="text-center">Catagory</th>
+                    <th scope="col" class="text-center">Image</th>
+                    <th scope="col" class="text-center">Description</th>
+                    <th scope="col" class="text-center">Update</th>
+                    <th scope="col" class="text-center">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in photos %}
+                <tr>
+                    <th scope="row" class="text-center align-middle" style="width: 25px;">{{ forloop.counter}}.</th>
+                    <td class="text-center align-middle" style="width: 200px;">{{ data.title }}</td>
+                    <td class="text-center align-middle" style="width: 200px;">{{ data.catagory }}</td>
+                    <td class="text-center align-middle" style="width: 300px;"><img style="height: 150px;width: 150px;"
+                        src="/media/{{ data.photo }}"></td>
+                    <td class="text-center align-middle" style="width: 200px;">{{ data.description }}</td>
+                    <td class="text-center align-middle"><a href="{% url 'teacher_panel:update_photo' id=data.id %}" class="btn btn-outline-warning btn-lg">Update</a></td>
+                    <td class="text-center align-middle"><a href="{% url 'teacher_panel:delete_photo' id=data.id %}" class="btn btn-outline-danger btn-lg">Delete</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'teacher_panel:add_photo' %}" class="btn btn-outline-dark mb-3">Add New Photo</a>
+    </div>
+</div>
+{% if delete_status %}
+<script>
+    alert("{{ delete_status }}")
+</script>
+{% endif %}
+{% endblock %}

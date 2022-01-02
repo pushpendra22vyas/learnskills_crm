@@ -1,0 +1,36 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Students List
+{% endblock %}
+{% block teacher %}
+<div class="container-fluid">
+    <div class="row py-md-3">
+        <div class="col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-header text-center bg-primary">
+                    <h1>List of Students</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th class="text-center">S.NO.</th>
+                            <th class="text-center">FULL NAME</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">JOINED</th>
+                        </tr>
+                        {% for s in student %}
+                        <tr>
+                            <td class="text-center">{{ forloop.counter }}</td>
+                            <td class="text-center">{{s.first_name}} {{s.last_name}}</td>
+                            <td class="text-center">{{s.id}}</td>
+                            <td class="text-center">{{s.date_joined}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'teacher_panel/teacher_base.html' %}
+{% load static %}
+{% block title %}
+Confirmation for {{user.first_name}}`s Profile delete
+{% endblock %}
+{% block teacher %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-8 mx-auto">
+            <h3 class="text-warning text-center">Do You Want To Delete Your Profile</h3>
+            <p class="text-secondary text-center">Click on The Delete and Delete Your Profile</p>
+            <div class="text-center my-5">
+                {% if data.profile_pic %}
+                <img src="/media/{{data.profile_pic}}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% else %}
+                <img src="{% static 'image/profile.jpg' %}" style="height: 150px;width: 150px;border-radius: 50%;">
+                {% endif %}
+            </div>
+            <div class="text-center">
+                <h1>{{ user.id }}</h1>
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                <h3><em>{{ user.email }}</em></h3>
+            </div>
+            <div class="text-center my-5">
+                <a href="{% url 'teacher_panel:confirm_teacher_delete' %}" class="btn btn-danger btn-lg">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
