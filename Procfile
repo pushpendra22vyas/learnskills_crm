@@ -1,1 +1,0 @@
-web: gunicorn CRM_COLLEGE.wsgi
